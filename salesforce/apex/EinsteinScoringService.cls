@@ -25,6 +25,11 @@ public with sharing class EinsteinScoringService {
         return result;
     }
 
+    // NOTE: This is an illustrative scoring surface using opportunity
+    // fields as proxies. In production, replace this logic with an
+    // actual Einstein Discovery or Prediction Builder API callout.
+    // Field-level prediction outputs should be read from Einstein-managed
+    // fields on the Opportunity object, not calculated here.
     private static ScoreResult calculateScore(Opportunity opportunityRecord) {
         Decimal score = opportunityRecord.Probability == null ? 50 : opportunityRecord.Probability;
         if (opportunityRecord.Amount != null && opportunityRecord.Amount >= 250000) {
